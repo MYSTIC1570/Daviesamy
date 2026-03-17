@@ -496,14 +496,15 @@ envelopeOpen?.addEventListener('click',()=>{
    ========================== */
 
 const galleryImages=[
-  {src:`img-placeholder.jpeg`,label:'Nosso momento 1'},
-  {src:`img-placeholder.jpeg`,label:'Nosso momento 2'},
-  {src:`img-placeholder.jpeg`,label:'Nosso momento 3'},
-  {src:`img-placeholder.jpeg`,label:'Nosso momento 4'}
+  {src:`img5.jpeg`,label:'Nosso momento 1'},
+  {src:`img6.jpeg`,label:'Nosso momento 2'},
+  {src:`img7.jpeg`,label:'Nosso momento 3'},
+  {src:`img8.jpeg`,label:'Nosso momento 4'}
 ];
-const skyImages=[`img-placeholder.jpeg`,`img-placeholder.jpeg`,`img-placeholder.jpeg`,`img-placeholder.jpeg`];
-const journeyImages=[`img-placeholder.jpeg`,`img-placeholder.jpeg`];
-const sections=[...document.querySelectorAll('.section')],progressBar=document.getElementById('progressBar'),navDots=document.getElementById('navDots');
+
+const skyImages=[`img9.jpeg`,`img10.jpeg`,`img11.jpeg`,`img12.jpeg`];
+
+const journeyImages=[`img3.jpeg`,`img4.jpeg`];const sections=[...document.querySelectorAll('.section')],progressBar=document.getElementById('progressBar'),navDots=document.getElementById('navDots');
 sections.forEach((sec,i)=>{const b=document.createElement('button');b.onclick=()=>sec.scrollIntoView({behavior:'smooth'});b.setAttribute('aria-label','Ir para seção '+(i+1));navDots.appendChild(b)});
 document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click',()=>{const current=btn.closest('.section');const idx=sections.indexOf(current);sections[Math.min(idx+1,sections.length-1)].scrollIntoView({behavior:'smooth'})}));
 const io=new IntersectionObserver(entries=>{const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];entries.forEach(entry=>{if(entry.isIntersecting) entry.target.querySelector('.reveal')?.classList.add('in')});if(visible){const idx=sections.indexOf(visible.target);progressBar.style.width=((idx+1)/sections.length*100)+'%';[...navDots.children].forEach((d,i)=>d.classList.toggle('active',i===idx))}},{threshold:[.25,.55,.8]}); sections.forEach(s=>io.observe(s));
